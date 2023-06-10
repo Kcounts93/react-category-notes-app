@@ -73,7 +73,7 @@ export function NoteForm({
                 </Col>
             </Row>
             <Form.Group controlId="markdown">
-                <Form.Label>Body</Form.Label>
+                <Form.Label>Note</Form.Label>
                 <Form.Control defaultValue={markdown} ref={markdownRef} required as="textarea" rows={15}/>
             </Form.Group>
             <Stack direction="horizontal" gap={2} className="justify-content-end">
