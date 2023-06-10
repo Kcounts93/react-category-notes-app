@@ -42,6 +42,7 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
                     <Form.Group controlId="tags">
                         <Form.Label>Tags</Form.Label>
                         <CreatableReactSelect
+                            className="text-dark bg-primary"
                             onCreateOption={label => {
                                 const newTag = { id: uuidV4(), label }
                                 onAddTag(newTag)
