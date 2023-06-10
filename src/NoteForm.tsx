@@ -11,7 +11,7 @@ type NoteFormProps = {
 export function NoteForm({ onSubmit }: NoteFormProps) {
     const titleRef = useRef<HTMLInputElement>(null)
     const markdownRef = useRef<HTMLTextAreaElement>(null)
-    const [selectedTags, setSelectedTags] = useState<Tag[]>
+    const [selectedTags, setSelectedTags] = useState<Tag[]>([])
 
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
@@ -21,7 +21,7 @@ export function NoteForm({ onSubmit }: NoteFormProps) {
             markdown: markdownRef.current!.value,
             tags: []
         })
-    }
+    } 
 
     return <Form onSubmit={handleSubmit}>
         <Stack gap={4}>
@@ -35,9 +35,18 @@ export function NoteForm({ onSubmit }: NoteFormProps) {
                 <Col>
                     <Form.Group controlId="tags">
                         <Form.Label>Tags</Form.Label>
-                        <CreatableReactSelect value={selectedTags.map((tag: { label: any; id: any; }) => {
+                        <CreatableReactSelect 
+                            value={selectedTags.map(tag => {
                             return { label: tag.label, value: tag.id }
-                        })} isMulti />
+                        })}
+                        onChange={tags => {
+                            setSelectedTags(
+                                tags.map(tag => {
+                                return { label: tag.label, id: tag.value }
+                            })
+                            )
+                        }} 
+                        isMulti />
                     </Form.Group>
                 </Col>
             </Row>
