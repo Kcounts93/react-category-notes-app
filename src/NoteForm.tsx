@@ -16,7 +16,7 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
     const markdownRef = useRef<HTMLTextAreaElement>(null)
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
     const navigate = useNavigate()
-    
+
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
 
@@ -49,16 +49,16 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
                             }}
                             value={selectedTags.map(tag => {
                             return { label: tag.label, value: tag.id }
-                        })}
-                        options={availableTags.map(tag => {
-                            return { label: tag.label, value: tag.id}
-                        })}
-                        onChange={tags => {
-                            setSelectedTags(
-                                tags.map(tag => {
-                                return { label: tag.label, id: tag.value }
-                            })
-                            )
+                            })}
+                            options={availableTags.map(tag => {
+                                return { label: tag.label, value: tag.id}
+                            })}
+                            onChange={tags => {
+                                setSelectedTags(
+                                    tags.map(tag => {
+                                    return { label: tag.label, id: tag.value }
+                                })
+                                )
                         }} 
                         isMulti />
                     </Form.Group>
